@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dpr } from '../Dpr';
-import { Ceasure } from '../ceasure';
-import { Lf } from '../lf';
-import { Hec } from '../hec';
-import { Sample } from '../sample';
-import { Nbup } from '../nbup';
-import { TestData } from '../TestData';
+import {FormsModule} from "@angular/forms"
 
 @Component({
   selector: 'app-form',
@@ -13,34 +8,21 @@ import { TestData } from '../TestData';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  map:{ [name: string]: string[] } = {
-    "LF": ["Date", "PR"],
-    "HEC": ["Date", "PR"],
-    "Sample":["Date","WC","Bup","Lp"],
-    "NBUP":["Date","Action","Remark"],
-    "Ceasure":["Date","Reason","Remark"],
-    "Test Data":["Date","Liq Rate","WC","Oil","Water"],
-    "Work Over":["Date","Remark"]
-  };
+  
+  obj: Dpr = new Dpr();
+  db: Dpr[]=[];
 
-  modelLf = new Lf();
-  modelHec = new Hec();
-  modelSample = new Sample();
-  modelNbup = new Nbup();
-  modelCeasure = new Ceasure();
-  modelTestData = new TestData();
-  model = new Dpr(this.modelLf,this.modelHec,this.modelSample,this.modelNbup,this.modelCeasure,this.modelTestData);
   submitted = false;
 
-  onSubmit() {
+  addToDB() {
     this.submitted = true;
+    this.db.push(this.obj);
+    this.obj = new Dpr();
   }
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  get diagnostic() { return JSON.stringify(this.model); }
 
 }

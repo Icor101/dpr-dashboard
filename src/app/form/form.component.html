@@ -1,19 +1,222 @@
 <div class="container">
-    <h1 style = "text-align:center; padding-bottom: 25px; padding-top: 10px;">DPR Form</h1>
-    <form>
-      <div class = "card-columns">
-        <div class="card" *ngFor = "let item of map | keyvalue">
-          <div class="card-body">
-            <h3 class="card-title">{{item.key}}</h3>
-            <div class="form-group" *ngFor = "let val of item.value">
-              <label for="Date">{{val}}</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
+  <h1 style="text-align: center; padding-bottom: 25px; padding-top: 10px;">
+    DPR Form
+  </h1>
+  <form #dprForm="ngForm">
+    <div class="card-columns">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">LF</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.lf.date"
+              name="lf.date"
+            />
+            <label>PR</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.lf.pr"
+              name="lf.pr"
+            />
           </div>
         </div>
       </div>
-      <div class = "text-center">
-        <button type="submit" class="btn btn-success">Submit</button>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">HEC</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.hec.date"
+              name="hec.date"
+            />
+            <label>PR</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.hec.pr"
+              name="hec.pr"
+            />
+          </div>
+        </div>
       </div>
-    </form>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Sample</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.sample.date"
+              name="sample.date"
+            />
+            <label>WC</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.sample.wc"
+              name="sample.wc"
+            />
+            <label>Bup</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.sample.bup"
+              name="sample.bup"
+            />
+            <label>Lp</label>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">NBUP</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.nbup.date"
+              name="nbup.date"
+            />
+            <label>Action</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.nbup.action"
+              name="nbup.action"
+            />
+            <label>Remark</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.nbup.remark"
+              name="nbup.remark"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Ceasure</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.ceasure.date"
+              name="ceasure.date"
+            />
+            <label>Reason</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.ceasure.reason"
+              name="ceasure.reason"
+            />
+            <label>Remark</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.ceasure.remark"
+              name="ceasure.remark"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Test Data</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.testData.date"
+              name="testData.date"
+            />
+            <label>Liq Rate</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.testData.liqRate"
+              name="testData.liqRate"
+            />
+            <label>WC</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.testData.wc"
+              name="testData.wc"
+            />
+            <label>Oil</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.testData.oil"
+              name="testData.oil"
+            />
+            <label>Water</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.testData.water"
+              name="testData.water"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Work Over</h3>
+          <div class="form-group">
+            <label>Date</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.workOver.date"
+              name="workOver.date"
+            />
+            <label>Remark</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              [(ngModel)]="obj.workOver.remark"
+              name="workOver.remark"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success" (click) = "addToDB(); dprForm.reset()">Submit</button>
+    </div>
+  </form>
 </div>
