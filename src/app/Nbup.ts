@@ -1,5 +1,5 @@
 export class Nbup {
-    date:string;
+    date:Date;
     action:string;
     remark:string;
 

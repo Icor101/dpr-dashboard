@@ -1,5 +1,5 @@
 export class WorkOver {
-    date:string;
+    date:Date;
     remark:string;
 
     // constructor(date:string,remark:string){

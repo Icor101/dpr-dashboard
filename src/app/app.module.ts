@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 enableProdMode();
 
@@ -19,7 +20,8 @@ enableProdMode();
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

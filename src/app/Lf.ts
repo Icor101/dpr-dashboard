@@ -1,5 +1,5 @@
 export class Lf {
-    date:string;
+    date:Date;
     pr:string;
 
     // constructor(date:string,pr:string){

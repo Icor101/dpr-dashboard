@@ -1,5 +1,5 @@
 export class Sample {
-    date:string;
+    date:Date;
     wc:string;
     bup:string;
     lp:string;

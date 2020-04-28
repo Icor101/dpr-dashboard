@@ -14,7 +14,6 @@ export class Dpr {
     ceasure: Ceasure = new Ceasure();
     testData: TestData = new TestData();
     workOver: WorkOver = new WorkOver();
-
     // constructor(lf:Lf,hec:Hec,sample:Sample,nbup:Nbup,ceasure:Ceasure,testData:TestData,workOver:WorkOver){
     //     this.lf=lf;
     //     this.hec=hec;
@@ -24,5 +23,4 @@ export class Dpr {
     //     this.testData=testData;
     //     this.workOver=workOver;
     // }
-
 }

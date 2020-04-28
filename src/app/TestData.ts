@@ -1,5 +1,5 @@
 export class TestData {
-    date:string;
+    date:Date;
     liqRate:string;
     wc:string;
     oil:string;

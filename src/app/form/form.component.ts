@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dpr } from '../Dpr';
-import {FormsModule} from "@angular/forms"
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form',
@@ -8,7 +8,7 @@ import {FormsModule} from "@angular/forms"
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  
+  model: NgbDateStruct;
   obj: Dpr = new Dpr();
   db: Dpr[]=[];
 

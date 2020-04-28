@@ -1,5 +1,5 @@
 export class Hec {
-    date: string;
+    date:Date;
     pr: string;
 
     // constructor(date:string,pr:string){

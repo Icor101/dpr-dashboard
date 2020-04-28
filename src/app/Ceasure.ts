@@ -1,5 +1,5 @@
 export class Ceasure {
-    date:string;
+    date:Date;
     reason:string;
     remark:string;
 
