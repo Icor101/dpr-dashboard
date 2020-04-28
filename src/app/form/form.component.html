@@ -1,343 +1,208 @@
 <head>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.css"
-  />
-  <style>
-    /* Datepicker popup icon */
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.css" />
+    <style>
+        /* Datepicker popup icon */
 
-    button.calendar,
-    button.calendar:active {
-      width: 2.75rem;
-      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=") !important;
-      background-repeat: no-repeat;
-      background-size: 23px;
-      background-position: center;
-    }
+        button.calendar,
+        button.calendar:active {
+            width: 2.75rem;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=") !important;
+            background-repeat: no-repeat;
+            background-size: 23px;
+            background-position: center;
+        }
 
-    /* Sortable table demo */
-    th[sortable] {
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
-    }
+        /* Sortable table demo */
+        th[sortable] {
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+        }
 
-    th[sortable].desc:before,
-    th[sortable].asc:before {
-      content: "";
-      display: block;
-      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC")
-        no-repeat;
-      background-size: 22px;
-      width: 22px;
-      height: 22px;
-      float: left;
-      margin-left: -22px;
-    }
+        th[sortable].desc:before,
+        th[sortable].asc:before {
+            content: "";
+            display: block;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC") no-repeat;
+            background-size: 22px;
+            width: 22px;
+            height: 22px;
+            float: left;
+            margin-left: -22px;
+        }
 
-    th[sortable].desc:before {
-      transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-    }
+        th[sortable].desc:before {
+            transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+        }
 
-    /* Filtering table demo */
-    ngbd-table-filtering span.ngb-highlight {
-      background-color: yellow;
-    }
+        /* Filtering table demo */
+        ngbd-table-filtering span.ngb-highlight {
+            background-color: yellow;
+        }
 
-    /* Complete table demo */
-    ngbd-table-complete span.ngb-highlight {
-      background-color: yellow;
-    }
+        /* Complete table demo */
+        ngbd-table-complete span.ngb-highlight {
+            background-color: yellow;
+        }
 
-    ngb-carousel .picsum-img-wrapper {
-      position: relative;
-      height: 0;
-      padding-top: 55%; /* Keep ratio for 900x500 images */
-    }
+        ngb-carousel .picsum-img-wrapper {
+            position: relative;
+            height: 0;
+            padding-top: 55%;
+            /* Keep ratio for 900x500 images */
+        }
 
-    ngb-carousel .picsum-img-wrapper > img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-    }
-  </style>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        ngb-carousel .picsum-img-wrapper>img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-  </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+    </ul>
 </nav>
 <div class="container">
-  <h1 style="text-align: center; padding-bottom: 25px; padding-top: 10px;">
-    DPR Form
-  </h1>
-  <form #dprForm="ngForm">
-    <div class="card-columns">
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">LF</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.lf.date"
-              ngbDatepicker
-              #lfDp="ngbDatepicker"
-              (click)="lfDp.toggle()"
-              required
-            />
-            <label>PR</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.lf.pr"
-              name="lf.pr"
-            />
-          </div>
+    <h1 style="text-align: center; padding-bottom: 25px; padding-top: 10px;">
+        DPR Form
+    </h1>
+    <form #dprForm="ngForm">
+        <div class="card-columns">
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">LF</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-pr" [(ngModel)]="obj.lf.date" ngbDatepicker
+                            #lfDp="ngbDatepicker" (click)="lfDp.toggle()" required />
+                        <label>PR</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.lf.pr" name="lf.pr" />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">HEC</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-hec" [(ngModel)]="obj.hec.date" ngbDatepicker
+                            #hecDp="ngbDatepicker" (click)="hecDp.toggle()" required />
+                        <label>PR</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.hec.pr" name="hec.pr" />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">Sample</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-sample" [(ngModel)]="obj.sample.date" ngbDatepicker
+                            #sampleDp="ngbDatepicker" (click)="sampleDp.toggle()" required />
+                        <label>WC</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.sample.wc"
+                            name="sample.wc" />
+                        <label>Bup</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.sample.bup"
+                            name="sample.bup" />
+                        <label>Lp</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.sample.lp"
+                            name="sample.lp" />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">NBUP</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-nbup" [(ngModel)]="obj.nbup.date" ngbDatepicker
+                            #nbupDp="ngbDatepicker" (click)="nbupDp.toggle()" required />
+                        <label>Action</label>
+                        <input type="text" class="form-control" required [(ngModel)]="obj.nbup.action"
+                            name="nbup.action" />
+                        <label>Remark</label>
+                        <input type="text" class="form-control" required [(ngModel)]="obj.nbup.remark"
+                            name="nbup.remark" />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">Ceasure</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-ceasure" [(ngModel)]="obj.ceasure.date" ngbDatepicker
+                            #ceasureDp="ngbDatepicker" (click)="ceasureDp.toggle()" required />
+                        <label>Reason</label>
+                        <input type="text" class="form-control" required [(ngModel)]="obj.ceasure.reason"
+                            name="ceasure.reason" />
+                        <label>Remark</label>
+                        <input type="text" class="form-control" required [(ngModel)]="obj.ceasure.remark"
+                            name="ceasure.remark" />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">Test Data</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-testdata" [(ngModel)]="obj.testData.date" ngbDatepicker
+                            #testDataDp="ngbDatepicker" (click)="testDataDp.toggle()" required />
+                        <label>Liq Rate</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.testData.liqRate"
+                            name="testData.liqRate" />
+                        <label>WC</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.testData.wc"
+                            name="testData.wc" />
+                        <label>Oil</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.testData.oil"
+                            name="testData.oil" />
+                        <label>Water</label>
+                        <input type="number" class="form-control" required [(ngModel)]="obj.testData.water"
+                            name="testData.water" required />
+                    </div>
+                </div>
+            </div>
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h3 class="card-title">Work Over</h3>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" name="dp-workover" [(ngModel)]="obj.workOver.date" ngbDatepicker
+                            #workOverDp="ngbDatepicker" (click)="workOverDp.toggle()" required />
+                        <label>Remark</label>
+                        <input type="text" class="form-control" required [(ngModel)]="obj.workOver.remark"
+                            name="workOver.remark" />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">HEC</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.hec.date"
-              ngbDatepicker
-              #hecDp="ngbDatepicker"
-              (click)="hecDp.toggle()"
-              required
-            />
-            <label>PR</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.hec.pr"
-              name="hec.pr"
-            />
-          </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" (click)="addToDB(); dprForm.reset()">
+                Submit
+            </button>
         </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">Sample</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.sample.date"
-              ngbDatepicker
-              #sampleDp="ngbDatepicker"
-              (click)="sampleDp.toggle()"
-              required
-            />
-            <label>WC</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.sample.wc"
-              name="sample.wc"
-            />
-            <label>Bup</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.sample.bup"
-              name="sample.bup"
-            />
-            <label>Lp</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.sample.lp"
-              name="sample.lp"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">NBUP</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.nbup.date"
-              ngbDatepicker
-              #nbupDp="ngbDatepicker"
-              (click)="nbupDp.toggle()"
-              required
-            />
-            <label>Action</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              [(ngModel)]="obj.nbup.action"
-              name="nbup.action"
-            />
-            <label>Remark</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              [(ngModel)]="obj.nbup.remark"
-              name="nbup.remark"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">Ceasure</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.ceasure.date"
-              ngbDatepicker
-              #ceasureDp="ngbDatepicker"
-              (click)="ceasureDp.toggle()"
-              required
-            />
-            <label>Reason</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              [(ngModel)]="obj.ceasure.reason"
-              name="ceasure.reason"
-            />
-            <label>Remark</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              [(ngModel)]="obj.ceasure.remark"
-              name="ceasure.remark"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">Test Data</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.testData.date"
-              ngbDatepicker
-              #testDataDp="ngbDatepicker"
-              (click)="testDataDp.toggle()"
-              required
-            />
-            <label>Liq Rate</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.testData.liqRate"
-              name="testData.liqRate"
-            />
-            <label>WC</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.testData.wc"
-              name="testData.wc"
-            />
-            <label>Oil</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.testData.oil"
-              name="testData.oil"
-            />
-            <label>Water</label>
-            <input
-              type="number"
-              class="form-control"
-              required
-              [(ngModel)]="obj.testData.water"
-              name="testData.water"
-              required
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card border-dark">
-        <div class="card-body">
-          <h3 class="card-title">Work Over</h3>
-          <div class="form-group">
-            <label>Date</label>
-            <input
-              class="form-control"
-              name="dp"
-              [(ngModel)]="obj.workOver.date"
-              ngbDatepicker
-              #workOverDp="ngbDatepicker"
-              (click)="workOverDp.toggle()"
-              required
-            />
-            <label>Remark</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              [(ngModel)]="obj.workOver.remark"
-              name="workOver.remark"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center">
-      <button
-        type="submit"
-        class="btn btn-success"
-        (click)="addToDB(); dprForm.reset()"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
+    </form>
 </div>
