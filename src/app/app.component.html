@@ -1,2 +1,22 @@
-<app-form></app-form>
-<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/form']">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/summary']">Link</a>
+    </li>
+  </ul>
+</nav>
+<div class="conatiner">
+  <router-outlet></router-outlet>
+</div>
+<particles
+  [params]="myParams"
+  [style]="myStyle"
+  [width]="width"
+  [height]="height"
+></particles>

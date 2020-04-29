@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ParticlesModule } from 'angular-particle';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SummaryComponent } from './summary/summary.component';
 
 enableProdMode();
 
@@ -15,6 +17,8 @@ enableProdMode();
     declarations: [
         AppComponent,
         FormComponent,
+        DashboardComponent,
+        SummaryComponent,
     ],
     imports: [
         BrowserModule,
