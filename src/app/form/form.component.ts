@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
 
     addToDB() {
         this.db.push(this.obj);
-        console.log(this.obj);
+        console.log(this.db);
         this.obj = new Dpr();
     }
 
