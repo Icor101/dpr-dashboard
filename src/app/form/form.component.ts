@@ -12,11 +12,9 @@ export class FormComponent implements OnInit {
     obj: Dpr = new Dpr();
     db: Dpr[] = [];
 
-    submitted = false;
-
     addToDB() {
-        this.submitted = true;
         this.db.push(this.obj);
+        console.log(this.obj);
         this.obj = new Dpr();
     }
 
