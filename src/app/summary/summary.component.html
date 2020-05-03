@@ -1,1 +1,24 @@
-<p>summary works!</p>
+<div class="container-fluid">
+    <table class="table table-hover text-center table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">LF</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+                <th scope="col">Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dprRow of this.db.store; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{dprRow.lf.date}}</td>
+                <td>{{dprRow.lf.pr}}</td>
+                <td>{{dprRow.nbup.date}}</td>
+                <td>{{dprRow.nbup.action}}</td>
+                <td>{{dprRow.nbup.remark}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

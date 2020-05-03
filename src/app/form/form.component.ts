@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Dpr } from '../Dpr';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { InMemoryDb } from '../in-memory-db';
 
 @Component({
     selector: 'app-form',
@@ -10,15 +11,15 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 export class FormComponent implements OnInit {
     model: NgbDateStruct;
     obj: Dpr = new Dpr();
-    db: Dpr[] = [];
 
     addToDB() {
-        this.db.push(this.obj);
-        console.log(this.db);
+        this.db.store.push(this.obj);
+        console.log('Form Component:');
+        console.log(this.db.store);
         this.obj = new Dpr();
     }
 
-    constructor() { }
+    constructor(public db: InMemoryDb) { }
 
     ngOnInit(): void {
     }

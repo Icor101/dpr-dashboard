@@ -10,6 +10,7 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ParticlesModule } from 'angular-particle';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryComponent } from './summary/summary.component';
+import { InMemoryDb } from './in-memory-db';
 
 enableProdMode();
 
@@ -29,7 +30,7 @@ enableProdMode();
         NgbModule,
         ParticlesModule
     ],
-    providers: [],
+    providers: [InMemoryDb],
     bootstrap: [AppComponent]
 })
 export class AppModule {
