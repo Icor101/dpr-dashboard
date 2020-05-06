@@ -9,8 +9,8 @@ import { InMemoryDb } from '../in-memory-db';
 })
 export class SummaryComponent implements OnInit {
 
-    // private REST_URL = 'http://34.69.234.16:3000/dprs'; // prod URL
-    private REST_URL = 'http://localhost:3000/dprs'; // dev URL
+    private REST_URL = 'http://34.69.234.16:3000/dprs'; // prod URL
+    // private REST_URL = 'http://localhost:3000/dprs'; // dev URL
 
     dprs = [];
 

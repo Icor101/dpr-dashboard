@@ -11,8 +11,8 @@ import { InMemoryDb } from '../in-memory-db';
 })
 export class FormComponent implements OnInit {
 
-    // private REST_URL = 'http://34.69.234.16:3000/save'; // prod URL
-    private REST_URL = 'http://localhost:3000/save'; // dev URL
+    private REST_URL = 'http://34.69.234.16:3000/save'; // prod URL
+    // private REST_URL = 'http://localhost:3000/save'; // dev URL
 
     model: NgbDateStruct;
     obj: Dpr = new Dpr();
