@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ParticlesModule } from 'angular-particle';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -25,6 +26,7 @@ enableProdMode();
         BrowserModule,
         CommonModule,
         FormsModule,
+        HttpClientModule,
         ReactiveFormsModule,
         AppRoutingModule,
         NgbModule,
