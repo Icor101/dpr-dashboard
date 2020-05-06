@@ -31,7 +31,7 @@ var dpr = mongoose.model('DPR', dprSchema);
 app.get('/', function (req, res) {
     console.log('GET request received at /');
     res.send({ 'statusMessage': 'Service is up and running!' });
-})
+});
 
 app.post('/save', function (req, res) {
     console.log('POST request received at /save');
@@ -42,6 +42,14 @@ app.post('/save', function (req, res) {
             return console.error(err);
     });
     res.send({ 'statusMessage': 'POST request received at /save' });
-})
+});
+
+app.get('/dprs', function (req, res) {
+    console.log('GET request received at /dprs');
+    dpr.find({}, function (err, dprs) {
+        res.send(dprs);
+    });
+    // res.send({ 'statusMessage': 'GET request received at /dprs' });
+});
 
 app.listen(port, () => console.log(`Database Service running at http://localhost:${port}`));

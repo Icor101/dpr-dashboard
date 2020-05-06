@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dprRow of this.db.store; let i = index">
+            <tr *ngFor="let dprRow of this.dprs; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{dprRow.lf.date}}</td>
                 <td>{{dprRow.lf.pr}}</td>

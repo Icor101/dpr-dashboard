@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { InMemoryDb } from '../in-memory-db';
 
 @Component({
@@ -8,12 +9,25 @@ import { InMemoryDb } from '../in-memory-db';
 })
 export class SummaryComponent implements OnInit {
 
-    constructor(public db: InMemoryDb) {
+    // private REST_URL = 'http://34.69.234.16:3000/dprs'; // prod URL
+    private REST_URL = 'http://localhost:3000/dprs'; // dev URL
+
+    dprs = [];
+
+    constructor(private httpClient: HttpClient, public db: InMemoryDb) {
         console.log('Summary:');
-        console.log(this.db.store);
+        // console.log(this.db.store);
+    }
+
+    public getDprData() {
+        return this.httpClient.get(this.REST_URL);
     }
 
     ngOnInit(): void {
+        this.getDprData().subscribe((data: any[]) => {
+            this.dprs = data;
+            console.log(data);
+        });
     }
 
 }
