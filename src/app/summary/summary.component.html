@@ -1,24 +1,84 @@
-<div class="container-fluid">
-    <table class="table table-hover text-center table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">LF</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-                <th scope="col">Remark</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dprRow of this.dprs; let i = index">
-                <td>{{i + 1}}</td>
-                <td>{{dprRow.lf.date}}</td>
-                <td>{{dprRow.lf.pr}}</td>
-                <td>{{dprRow.nbup.date}}</td>
-                <td>{{dprRow.nbup.action}}</td>
-                <td>{{dprRow.nbup.remark}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid" style="margin-top: 20px">
+  <div class="row" style="margin-bottom: 20px">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>
+          Well
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+          <button *ngFor = "let well of this.wells" ngbDropdownItem>{{well}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div ngbDropdown class="d-inline-block" [(ngModel)]="selectedField">
+        <button class="btn btn-secondary" id="dropdownBasic2" ngbDropdownToggle>
+          DPR Fields
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <button *ngFor = "let field of this.dprFields" ngbDropdownItem>{{field}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group">
+        <label style="margin-top: 5px; margin-right: 5px;">From:</label>
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #d="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="d.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group">
+        <label style="margin-top: 5px; margin-right: 5px;">To:</label>
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #d1="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="d1.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover text-center table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">LF</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+        <th scope="col">Remark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dprRow of this.dprs; let i = index" >
+        <td *ngIf="i!=1">{{ i + 1 }}</td>
+        <td *ngIf="i!=1">{{ dprRow.lf.date | json}}</td>
+        <td *ngIf="i!=1">{{ dprRow.lf.pr }}</td>
+        <td *ngIf="i!=1">{{ dprRow.nbup.date | json}}</td>
+        <td *ngIf="i!=1">{{ dprRow.nbup.action }}</td>
+        <td *ngIf="i!=1">{{ dprRow.nbup.remark }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

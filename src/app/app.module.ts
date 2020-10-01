@@ -30,7 +30,7 @@ enableProdMode();
         ReactiveFormsModule,
         AppRoutingModule,
         NgbModule,
-        ParticlesModule
+        ParticlesModule,
     ],
     providers: [InMemoryDb],
     bootstrap: [AppComponent]
