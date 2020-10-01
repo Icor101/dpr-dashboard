@@ -1,4 +1,6 @@
-# DPR-Dashboard
+# DPR Dashboard
+
+This project is for maintaining the DPR data for various oil wells scattered across any location.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.2.
 
