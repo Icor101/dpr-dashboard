@@ -27,7 +27,7 @@
     "express": "^4.17.1",
     "highcharts": "^9.0.0",
     "jquery": "^3.5.0",
-    "mongoose": "^5.9.12",
+    "mongoose": "^5.13.15",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
