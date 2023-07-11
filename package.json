@@ -24,7 +24,7 @@
     "angular-particle": "^1.0.4",
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "highcharts": "^9.0.0",
     "jquery": "^3.5.0",
     "mongoose": "^5.9.12",
